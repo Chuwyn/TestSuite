@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopUI.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DesktopUI.Models
 {
-    class TestDataModel : INotifyPropertyChanged
+    public class TestDataModel : ObservableObject
     {
         // Pressure Data
         private double _col1;
@@ -100,13 +101,6 @@ namespace DesktopUI.Models
                 _consumption = value;
                 OnPropertyChanged("Consumption");
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -21,15 +21,17 @@ namespace DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TestSession _testSession;
+        private TestViewModel _testViewModel;
+        
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _testSession = new TestSession();
+            _testViewModel = new TestViewModel();
 
-            DataContext = _testSession;
+            DataContext = _testViewModel;
         }
+        
     }
 }

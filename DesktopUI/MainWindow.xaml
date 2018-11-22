@@ -4,70 +4,89 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopUI"
+        xmlns:models="clr-namespace:DesktopUI.Models"
+        xmlns:vm ="clr-namespace:DesktopUI.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type models:TestDataModel}">
+            <Border BorderBrush="Black" BorderThickness="1" Padding="20">
+                <Grid ShowGridLines="True" Background="LightSteelBlue">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" FontSize="14" FontWeight="Bold" Foreground="Green" VerticalAlignment="Top" />
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Col 1" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="2" Text="Col 2" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="3" Text="Air Tank" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="4" Text="Product Tank" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="5" Text="Purity" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text="Flow" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="7" Text="Consumption" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="0" Grid.Row="8" Text="Temperature" FontSize="12" FontWeight="Bold" />
+
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Chart Min" FontSize="14" FontWeight="Bold" Foreground="Green" VerticalAlignment="Top" />
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="2" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="3" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="4" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="5" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="6" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="7" Text="0" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="1" Grid.Row="8" Text="0" FontSize="12" FontWeight="Bold" />
+
+                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Chart Max" FontSize="14" FontWeight="Bold" Foreground="Green" VerticalAlignment="Top" />
+                    <TextBlock Grid.Column="2" Grid.Row="1" Text="16" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="2" Text="16" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="3" Text="16" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="4" Text="16" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="5" Text="100" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="6" Text="*" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="7" Text="*" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="2" Grid.Row="8" Text="100" FontSize="12" FontWeight="Bold" />
+
+                    <TextBlock Grid.Column="3" Grid.Row="0" Text="Value" FontSize="14" FontWeight="Bold" Foreground="Green" VerticalAlignment="Top" />
+                    <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding Col1}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="2" Text="{Binding Col2}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="3" Text="{Binding AirTank}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="4" Text="{Binding ProdTank}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="5" Text="{Binding Purity}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="6" Text="{Binding Flow}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="7" Text="{Binding Consumption}" FontSize="12" FontWeight="Bold" />
+                    <TextBlock Grid.Column="3" Grid.Row="8" Text="{Binding Temp}" FontSize="12" FontWeight="Bold" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Background="Aquamarine" Content="Charting" />
+        <Grid Grid.Row="0">
+            
+            <local:PointShapeLineExample />
+            
+        </Grid>
+        
         <ScrollViewer Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" Orientation="Vertical">
-                    <TextBlock Text="Name" HorizontalAlignment="Center" />
-                    <TextBlock Text="Col 1" HorizontalAlignment="Center" />
-                    <TextBlock Text="Col 2" HorizontalAlignment="Center" />
-                    <TextBlock Text="Air Tank" HorizontalAlignment="Center" />
-                    <TextBlock Text="Product Tank" HorizontalAlignment="Center" />
-                    <TextBlock Text="Purity" HorizontalAlignment="Center" />
-                    <TextBlock Text="Flow" HorizontalAlignment="Center" />
-                    <TextBlock Text="Consumption" HorizontalAlignment="Center" />
-                    <TextBlock Text="Temperature" HorizontalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Vertical">
-                    <TextBlock Text="Scaled Min" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                    <TextBlock Text="0" HorizontalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Grid.Column="2" Orientation="Vertical">
-                    <TextBlock Text="Scaled Min" HorizontalAlignment="Center" />
-                    <TextBlock Text="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="16" HorizontalAlignment="Center" />
-                    <TextBlock Text="100" HorizontalAlignment="Center" />
-                    <TextBlock Text="*" HorizontalAlignment="Center" />
-                    <TextBlock Text="*" HorizontalAlignment="Center" />
-                    <TextBlock Text="100" HorizontalAlignment="Center" />
-                </StackPanel>
-                <StackPanel Grid.Column="3" Orientation="Vertical">
-                    <TextBlock Text="Value" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.Col1}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.Col2}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.AirTank}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.ProdTank}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.Purity}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.Flow}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.Consumption}" HorizontalAlignment="Center" />
-                    <TextBlock Text="{Binding CurrentTestData.Temp}" HorizontalAlignment="Center" />
-                </StackPanel>
-                
-            </Grid>
+            <ContentControl Margin="20,10" Content="{Binding Path=CurrentTestData}" />
         </ScrollViewer>
     </Grid>
 </Window>
